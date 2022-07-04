@@ -8,11 +8,12 @@ using RentACar.Entities.Concrete;
 
 namespace RentACar.Business.Absract
 {
-    public interface IColorService
+    public interface IUserService
     {
-        IResult Add(Color color);
-        IResult Delete(Color color);
-        IResult Update(Color color);
-        IDataResult<List<Color>> GetAll();
+        IResult Add(User user);
+        IResult Update(User user);
+        IResult Delete(User user);
+        IDataResult<List<User>> GetAll();
+
     }
 }

@@ -1,12 +1,13 @@
-﻿using RentACar.Entities.Absract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using RentACar.Core.Entities;
 
-namespace RentACar.DataAcces.Absract
+
+namespace RentACar.Core.DataAccess
 {
     public interface IEntityRepository<TEntity> 
         where TEntity : class , IEntity , new ()

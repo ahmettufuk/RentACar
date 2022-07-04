@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using RentACar.Core.DataAccess;
 using RentACar.Entities.Concrete;
-using RentACar.Entities.DTOs;
 
 namespace RentACar.DataAcces.Absract
 {
-    public interface ICarDal : IEntityRepository<Car>
+    public interface ICustomerDal : IEntityRepository<Customer>
     {
-        List<CarDetails> GetCarDetails();
     }
 }

@@ -5,8 +5,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RentACar.DataAcces.Absract;
-using RentACar.Entities.Absract;
+using RentACar.Core.Entities;
+
+
+
 
 namespace RentACar.Core.DataAccess.EntityFramework
 {

@@ -17,18 +17,16 @@ namespace RentACar.DataAcces.Concrete.EntityFramework
         {
             using (RentACarContext context = new RentACarContext())
             {
+
                 var result = from car in context.Cars
-                    join color in context.Colors
-                        on car.ColorId equals color.ColorId
-                    join brand in context.Brands
-                        on car.BrandId equals brand.BrandId
+                    join color in context.Colors on car.ColorId equals color.ColorId
+                    join brand in context.Brands on car.BrandId equals brand.BrandId
                     select new CarDetails
                     {
                         CarName = car.Description,
                         ColorName = color.ColorName,
                         BrandName = brand.BrandName,
                         DailyPrice = car.DailyPrice,
-                        
                     };
 
                 return result.ToList();

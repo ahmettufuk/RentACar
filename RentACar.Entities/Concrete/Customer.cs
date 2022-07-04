@@ -7,9 +7,10 @@ using RentACar.Core.Entities;
 
 namespace RentACar.Entities.Concrete
 {
-    public class Brand :IEntity
+    public class Customer : IEntity
     {
-        public int BrandId { get; set; }
-        public string BrandName { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string CompanyName { get; set; }
     }
 }

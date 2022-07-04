@@ -10,7 +10,7 @@ using RentACar.Entities.Concrete;
 
 namespace RentACar.DataAcces.Concrete.EntityFramework
 {
-    public class EfColorDal : EfEntityRepositoryBase<Color,RentACarContext> , IColorDal
+    public class EfBrandCarDal : EfEntityRepositoryBase<Brand, RentACarContext>, IBrandDal
     {
 
     }

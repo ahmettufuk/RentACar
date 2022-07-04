@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentACar.Business.Absract;
+using RentACar.Business.Constants;
+using RentACar.Core.Utilities;
+using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
 using RentACar.Entities.DTOs;
@@ -19,39 +22,42 @@ namespace RentACar.Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return  _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
-        public List<CarDetails> GetAllDetails()
+        public IDataResult<List<CarDetails>> GetAllDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetails>>(_carDal.GetCarDetails(), Messages.CarsListed);
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll(c => c.BrandId == brandId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll().Where(p=> p.BrandId == brandId).ToList(), Messages.CarsListed);
         }
 
-        public List<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(c => c.ColorId == colorId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll().Where(p => p.ColorId == colorId).ToList(), Messages.CarsListed);
         }
     }
 }
