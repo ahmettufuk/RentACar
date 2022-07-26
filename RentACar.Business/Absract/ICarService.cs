@@ -15,7 +15,7 @@ namespace RentACar.Business.Absract
         IResult Update(Car car);
         IResult Delete(Car car);
         IDataResult<List<Car>> GetAll();
-        IDataResult<List<CarDetails>> GetAllDetails();
+        IDataResult<List<CarDetails>> GetCarDetails();
         IDataResult<List<Car>> GetCarsByBrandId(int brandId);
         IDataResult<List<Car>> GetCarsByColorId(int colorId);
     }

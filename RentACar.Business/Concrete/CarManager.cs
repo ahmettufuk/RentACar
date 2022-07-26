@@ -45,7 +45,7 @@ namespace RentACar.Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
-        public IDataResult<List<CarDetails>> GetAllDetails()
+        public IDataResult<List<CarDetails>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetails>>(_carDal.GetCarDetails(), Messages.CarsListed);
         }

@@ -12,6 +12,7 @@ foreach (var s in carsResult.Data)
 
 var brandManager = new BrandManager(new EfBrandCarDal());
 var brandResult =brandManager.GetAll();
+
 foreach (var brand in brandResult.Data)
 {
     Console.WriteLine(brand.BrandName);
