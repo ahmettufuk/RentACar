@@ -23,7 +23,7 @@ namespace RentACar.DataAcces.Concrete.EntityFramework
                     join brand in context.Brands on car.BrandId equals brand.BrandId
                     select new CarDetails
                     {
-                        CarName = car.Description,
+                        CarName = car.CarName,
                         ColorName = color.ColorName,
                         BrandName = brand.BrandName,
                         DailyPrice = car.DailyPrice,

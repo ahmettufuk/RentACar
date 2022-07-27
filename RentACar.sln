@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Business", "RentAC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Core", "RentACar.Core\RentACar.Core.csproj", "{08201494-29B9-4DFC-8F26-FBF0DF2CD767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACarAPI", "RentACarAPI\RentACarAPI.csproj", "{DE7529A8-F948-451C-8440-55A0CC538CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACarAPI", "RentACarAPI\RentACarAPI.csproj", "{DE7529A8-F948-451C-8440-55A0CC538CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

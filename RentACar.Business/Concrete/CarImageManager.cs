@@ -7,6 +7,7 @@ using RentACar.Business.Absract;
 using RentACar.Business.Constants;
 using RentACar.Business.ValidationRules.FluentValidation;
 using RentACar.Core.Aspects.Autofac.Validation;
+using RentACar.Core.Utilities.Business;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
@@ -25,6 +26,11 @@ namespace RentACar.Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage carImage)
         {
+            var result = BusinessRules.Run(CheckCarImageExist(carImage.ImagePath),CheckCarImageNumber(carImage.CarId));
+            if (result!=null)
+            {
+                return result;
+            }
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarAdded);
         }
@@ -44,6 +50,28 @@ namespace RentACar.Business.Concrete
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(),Messages.CarsListed);
+        }
+
+        public IResult CheckCarImageNumber(int carId)
+        {
+            var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
+            if (result>5)
+            {
+                return new ErrorResult("Car Images Count Must Be Lower Then 5");
+            }
+
+            return new SuccessResult();
+        }
+
+        public IResult CheckCarImageExist(string carImagePath)
+        {
+            var result = _carImageDal.GetAll(c => c.ImagePath == carImagePath).Any();
+            if (result)
+            {
+                return new ErrorResult("There is already exist this image before");
+            }
+
+            return new SuccessResult();
         }
     }
 }
