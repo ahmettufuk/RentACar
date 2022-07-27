@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RentACar.Business.Absract;
 using RentACar.Business.Constants;
+using RentACar.Business.ValidationRules.FluentValidation;
+using RentACar.Core.Aspects.Autofac.Validation;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
@@ -20,12 +22,13 @@ namespace RentACar.Business.Concrete
             _userDal = userDal;
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
-
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
             _userDal.Update(user);

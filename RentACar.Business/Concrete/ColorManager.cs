@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RentACar.Business.Absract;
 using RentACar.Business.Constants;
+using RentACar.Business.ValidationRules.FluentValidation;
+using RentACar.Core.Aspects.Autofac.Validation;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
@@ -20,7 +22,7 @@ namespace RentACar.Business.Concrete
             _colorDal = colorDal;
         }
 
-
+        [ValidationAspect(typeof(ColourValidator))]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
@@ -32,7 +34,7 @@ namespace RentACar.Business.Concrete
             _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDeleted);
         }
-
+        [ValidationAspect(typeof(ColourValidator))]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);

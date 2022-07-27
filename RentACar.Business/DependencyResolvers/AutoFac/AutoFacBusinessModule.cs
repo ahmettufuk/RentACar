@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using RentACar.Business.Absract;
 using RentACar.Business.Concrete;
+using RentACar.Core.Utilities.Interceptors;
 using RentACar.DataAcces.Absract;
 using RentACar.DataAcces.Concrete.EntityFramework;
 
@@ -35,6 +38,14 @@ namespace RentACar.Business.DependencyResolvers.AutoFac
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterseptorSelector()
+                }).SingleInstance();
 
         }
     }

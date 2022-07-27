@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RentACar.Business.Absract;
 using RentACar.Business.Constants;
+using RentACar.Business.ValidationRules.FluentValidation;
+using RentACar.Core.Aspects.Autofac.Validation;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
@@ -21,7 +23,7 @@ namespace RentACar.Business.Concrete
             _rentalDal = rentalDal;
         }
 
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             if (rental.ReturnDate <= DateTime.Now)
@@ -39,7 +41,7 @@ namespace RentACar.Business.Concrete
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.RentalDeleted);
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
