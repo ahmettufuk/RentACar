@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
+using RentACar.Core.Entities.Concrete;
 using RentACar.Entities.Concrete;
 
 namespace RentACar.Business.ValidationRules.FluentValidation
@@ -15,7 +16,7 @@ namespace RentACar.Business.ValidationRules.FluentValidation
             RuleFor(u => u.FirstName).NotNull().NotEmpty().MinimumLength(2).MaximumLength(50);
             RuleFor(u=>u.LastName).NotNull().NotEmpty().MinimumLength(2).MaximumLength(30);
             RuleFor(u => u.Email).NotNull().NotEmpty().MinimumLength(5).MaximumLength(100).EmailAddress();
-            RuleFor(u => u.Password).NotNull().NotEmpty().MinimumLength(8).Must(PasswordValidator);
+            //RuleFor(u => u.password).NotNull().NotEmpty().MinimumLength(8).Must(PasswordValidator);
 
         }
 

@@ -7,6 +7,7 @@ using RentACar.Business.Absract;
 using RentACar.Business.Constants;
 using RentACar.Business.ValidationRules.FluentValidation;
 using RentACar.Core.Aspects.Autofac.Validation;
+using RentACar.Core.Entities.Concrete;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;

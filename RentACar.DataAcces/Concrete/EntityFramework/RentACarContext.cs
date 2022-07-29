@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RentACar.Core.Entities.Concrete;
 
 namespace RentACar.DataAcces.Concrete.EntityFramework
 {
@@ -19,6 +20,8 @@ namespace RentACar.DataAcces.Concrete.EntityFramework
         public DbSet<Rental> Rentals { get; set; }
 
         public DbSet<CarImage> CarImages { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationsClaims { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
