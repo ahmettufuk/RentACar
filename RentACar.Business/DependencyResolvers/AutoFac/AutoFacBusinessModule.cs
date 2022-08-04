@@ -9,6 +9,7 @@ using Castle.DynamicProxy;
 using RentACar.Business.Absract;
 using RentACar.Business.Concrete;
 using RentACar.Core.Utilities.Interceptors;
+using RentACar.Core.Utilities.Security.JWT;
 using RentACar.DataAcces.Absract;
 using RentACar.DataAcces.Concrete.EntityFramework;
 
@@ -41,6 +42,10 @@ namespace RentACar.Business.DependencyResolvers.AutoFac
 
             builder.RegisterType<CarImageManager>().As<ICarImageService>();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

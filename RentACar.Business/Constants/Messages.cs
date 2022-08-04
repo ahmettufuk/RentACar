@@ -41,7 +41,16 @@ namespace RentACar.Business.Constants
 
         public static string CarsNameInvalid = "Car Name is invalid";
 
-      
-        
+        public static string AuthorizationDenied = "Authorization Denied";
+        public static string UserRegistered = "User Registered";
+        public static string UserNotFound = "User Not Found";
+        public static string PasswordError = "Password Is not Correct";
+        public static string SuccessfulLogin = "Successful!!";
+        public static string UserAlreadyExists = "User Already Exists";
+        public static string AccessTokenCreated = "Access Token Created";
+
+
+
+
     }
 }

@@ -25,12 +25,8 @@ foreach (var color in colorResult.Data)
     Console.WriteLine(color.ColorName);
 }
 
-var UserManager = new UserManager(new EfUserDal());
-var UserManagerResult = UserManager.GetAll();
-foreach (var user in UserManagerResult.Data)
-{
-    Console.WriteLine(user.FirstName);
-}
+
+
 
 var rentalManager = new RentalManager(new EfRentalDal());
 var rentalManagerResult = rentalManager.GetAll();

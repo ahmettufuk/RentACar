@@ -52,6 +52,12 @@ namespace RentACar.Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(),Messages.CarsListed);
         }
 
+        public IDataResult<List<CarImage>> GetByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll().Where(c => c.CarId == carId).ToList(),
+                "CarListed");
+        }
+
         public IResult CheckCarImageNumber(int carId)
         {
             var result = _carImageDal.GetAll(c => c.CarId == carId).Count;

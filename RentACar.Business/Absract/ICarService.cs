@@ -18,5 +18,6 @@ namespace RentACar.Business.Absract
         IDataResult<List<CarDetails>> GetCarDetails();
         IDataResult<List<Car>> GetCarsByBrandId(int brandId);
         IDataResult<List<Car>> GetCarsByColorId(int colorId);
+
     }
 }

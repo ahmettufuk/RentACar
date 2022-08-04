@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentACar.Business.Absract;
+using RentACar.Business.BusinessAspects.Autofac;
 using RentACar.Business.Constants;
 using RentACar.Business.ValidationRules.FluentValidation;
+using RentACar.Core.Aspects.Autofac.Caching;
 using RentACar.Core.Aspects.Autofac.Validation;
 using RentACar.Core.Utilities;
 using RentACar.Core.Utilities.Results;
@@ -24,7 +26,9 @@ namespace RentACar.Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
@@ -62,5 +66,7 @@ namespace RentACar.Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll().Where(p => p.ColorId == colorId).ToList(), Messages.CarsListed);
         }
+
+
     }
 }

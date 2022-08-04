@@ -3,6 +3,9 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RentACar.Business.DependencyResolvers.AutoFac;
+using RentACar.Core.DependencyResolvers;
+using RentACar.Core.Extensions;
+using RentACar.Core.Utilities.IOC;
 using RentACar.Core.Utilities.Security.Encryption;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +26,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
     };
 });
+
+builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(p =>
     p.RegisterModule(new AutoFacBusinessModule())

@@ -11,10 +11,9 @@ namespace RentACar.Business.Absract
 {
     public interface IUserService
     {
-        IResult Add(User user);
-        IResult Update(User user);
-        IResult Delete(User user);
-        IDataResult<List<User>> GetAll();
+        List<OperationClaim> GetClaims(User user);
+        void Add(User user);
+        User GetByMail(string email);
 
     }
 }
