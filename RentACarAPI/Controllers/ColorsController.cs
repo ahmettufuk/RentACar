@@ -16,11 +16,12 @@ namespace RentACarAPI.Controllers
             _colorService = colorService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet]
         public IActionResult GetAll()
         {
             var result = _colorService.GetAll();
-            return result.Success ? Ok(result.Data) : BadRequest(result.Message);
+
+            return result.Success ? Ok(result) : BadRequest(result.Message);
         }
 
         [HttpPost("add")]

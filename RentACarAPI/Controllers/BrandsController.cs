@@ -21,7 +21,7 @@ namespace RentACarAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _brandService.GetAll();
-            return result.Success ? Ok(result.Data) : BadRequest(result.Message);
+            return result.Success ? Ok(result) : BadRequest(result.Message);
         }
 
         [HttpPost("add")]

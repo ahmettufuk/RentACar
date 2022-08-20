@@ -12,5 +12,6 @@ namespace RentACar.DataAcces.Absract
     public interface ICarDal : IEntityRepository<Car>
     {
         List<CarDetails> GetCarDetails();
+        List<CarDetailForListAngularDto> GetCarDetailForListAngular();
     }
 }

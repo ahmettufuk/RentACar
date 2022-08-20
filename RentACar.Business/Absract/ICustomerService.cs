@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RentACar.Core.Utilities.Results;
 using RentACar.Entities.Concrete;
+using RentACar.Entities.DTOs;
 
 namespace RentACar.Business.Absract
 {
@@ -14,6 +15,8 @@ namespace RentACar.Business.Absract
         IResult Update(Customer customer);
         IResult Delete(Customer customer);
         IDataResult<List<Customer>> GetAll();
+
+        IDataResult<List<CustomerDetailDto>> GetCustomerDetail();
 
     }
 }

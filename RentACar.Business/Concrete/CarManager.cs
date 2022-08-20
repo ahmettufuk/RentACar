@@ -26,7 +26,7 @@ namespace RentACar.Business.Concrete
             _carDal = carDal;
         }
 
-        [SecuredOperation("product.add,admin")]
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
@@ -53,6 +53,22 @@ namespace RentACar.Business.Concrete
         public IDataResult<List<CarDetails>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetails>>(_carDal.GetCarDetails(), Messages.CarsListed);
+        }
+
+        public IDataResult<List<CarDetailForListAngularDto>> GetCarDetailForListAngular()
+        {
+            return new SuccessDataResult<List<CarDetailForListAngularDto>>(_carDal.GetCarDetailForListAngular(),
+                Messages.CarsListed);
+        }
+
+        public IDataResult<List<CarDetailForListAngularDto>> GetCarDetailsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailForListAngularDto>>(_carDal.GetCarDetailForListAngular().Where(p=>p.BrandId==brandId).ToList(),Messages.CarsListed);
+        }
+
+        public IDataResult<List<CarDetailForListAngularDto>> GetCarDetailsByColourId(int colourId)
+        {
+            return new SuccessDataResult<List<CarDetailForListAngularDto>>(_carDal.GetCarDetailForListAngular().Where(p => p.ColorId == colourId).ToList(), Messages.CarsListed);
         }
 
 

@@ -10,6 +10,7 @@ using RentACar.Core.Aspects.Autofac.Validation;
 using RentACar.Core.Utilities.Results;
 using RentACar.DataAcces.Absract;
 using RentACar.Entities.Concrete;
+using RentACar.Entities.DTOs;
 
 namespace RentACar.Business.Concrete
 {
@@ -44,6 +45,12 @@ namespace RentACar.Business.Concrete
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomerListed);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetail()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetDetailCustomer(),
+                Messages.CustomerListed);
         }
     }
 }

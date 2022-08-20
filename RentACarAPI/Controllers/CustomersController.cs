@@ -19,8 +19,8 @@ namespace RentACarAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _customerService.GetAll();
-            return result.Success ? Ok(result.Data) : BadRequest(result.Message);
+            var result = _customerService.GetCustomerDetail();
+            return result.Success ? Ok(result) : BadRequest(result.Message);
         }
 
         [HttpPost("add")]

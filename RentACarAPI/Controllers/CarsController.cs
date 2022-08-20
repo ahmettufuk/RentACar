@@ -18,8 +18,17 @@ namespace RentACarAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetCarDetails();
-            return  !result.Success ?  BadRequest(result.Message) :  Ok(result.Data);
+
+           // var result = _carService.GetCarDetails();
+           var result = _carService.GetCarDetailForListAngular();
+            return  !result.Success ?  BadRequest(result.Message) :  Ok(result);
+        }
+
+        [HttpGet("getbybrand")]
+        public IActionResult GetCarsByBrand(int id)
+        {
+            var result = _carService.GetCarDetailsByBrandId(id);
+            return !result.Success ? BadRequest(result.Message) : Ok(result);
         }
 
         [HttpPost("add")]
